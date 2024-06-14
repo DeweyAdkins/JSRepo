@@ -1,25 +1,44 @@
 const hands = ['rock' , 'paper', 'scissors'];
 
 function getHand() {
-    return hands[parseInt(Math.random()*10)%3]
+    return hands[parseInt(Math.random()*10)%3];
 } 
 
 const player1 = {
     name: 'Dewey',
-    getHand: getHand
+    getHand: getHand,
+    Wins: 0,
 };
 
 const player2 = {
-    name: 'Friend',
-    getHand: getHand
+    name: 'Daylen',
+    getHand: getHand,
+    Wins: 0,
+
 };
+
+const player3 = {
+    name: 'Justice',
+    getHand: getHand,
+    Wins: 0,
+
+};
+
+const player4 = {
+    name: 'Ryan',
+    getHand: getHand,
+    Wins: 0,
+
+};
+
+let firstPlace = {};
 
 function playRound(player1, player2) {
     const hand1 = player1.getHand();
     const hand2 = player2.getHand();
 
-    console.log(`Dewey played: ${hand1}`);
-    console.log(`Friend played: ${hand2}`);
+    console.log(`${player1.name} played: ${hand1}`);
+    console.log(`${player2.name} played: ${hand2}`);
 
     if (hand1 === hand2) {
         console.log('It\'s a tie!');
@@ -28,12 +47,43 @@ function playRound(player1, player2) {
     } else if ((hand1 === 'rock' && hand2 === 'scissors') ||
         (hand1 === 'paper' && hand2 === 'rock') ||
         (hand1 === 'scissors' && hand2 === 'paper')) {
-        return console.log(`The winner is dewey ${hand1}`);
+        player1.Wins ++; 
+        return console.log(`The winner is ${player1.name} ${player1.Wins} ${hand1}`);
     } else {
-        return console.log(`The winner is Friend ${hand2}`);
+        player2.Wins ++;
+        return console.log(`The winner is ${player2.name} ${player2.Wins} ${hand2}`);
     }
 }
 
-playRound(player1, player2)
-            
+function playGame(player1, player2, playUntil) {
+        while (player1.Wins < playUntil && player2.Wins < playUntil) {
+            playRound (player1, player2);
+            if (player1.Wins == playUntil){
+                return player1;
+            }  else if 
+                (player2.Wins == playUntil){
+                return player2;
+        }
+
+
+}
+}
+
+
+function playTournament(player1, player2, player3, player4, playUntil) { 
+        let gameOneWin = playGame (player1, player2, 3);
+        let gameTwoWin = playGame (player3, player4, 3);
+        gameOneWin.Wins = 0;
+        gameTwoWin.Wins = 0;
+        firstPlace = playGame (gameOneWin, gameTwoWin, 3);
+    return firstPlace;
+}
+
+
+
+firstPlace = playTournament (player1, player2, player3, player4, 1);
+    console.log(firstPlace.name + " is the world champion!")
+
+
+        
         
