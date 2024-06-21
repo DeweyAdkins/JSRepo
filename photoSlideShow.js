@@ -1,7 +1,13 @@
 const photoSlideShow = {
     photoList: ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo4.jpg'],
     currentPhotoIndex: 0,
+
+    //Function to move on to the next photo
+
     nextPhoto: function() {
+
+    // If not at the end of the list, increment the index
+
         if (this.currentPhotoIndex < this.photoList.length - 1) {
             this.currentPhotoIndex++;
             console.log(this.photoList[this.currentPhotoIndex]);
@@ -35,5 +41,5 @@ photoSlideShow.prevPhoto();
 photoSlideShow.prevPhoto();
 photoSlideShow.prevPhoto();
 photoSlideShow.prevPhoto();
-w
+
 

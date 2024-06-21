@@ -1,5 +1,7 @@
+//Possibl Hand
 const hands = ['rock' , 'paper', 'scissors'];
 
+//Function to get a random hand from the array of hands
 function getHand() {
     return hands[parseInt(Math.random()*10)%3];
 } 
@@ -33,6 +35,7 @@ const player4 = {
 
 let firstPlace = {};
 
+//Function to play a round of rock, paper, scissors between two players and update their wins accordingly.
 function playRound(player1, player2) {
     const hand1 = player1.getHand();
     const hand2 = player2.getHand();
@@ -69,7 +72,7 @@ function playGame(player1, player2, playUntil) {
 }
 }
 
-
+// Play a  tournamentbetween 4 different players and take the winners to move to the next round.
 function playTournament(player1, player2, player3, player4, playUntil) { 
         let gameOneWin = playGame (player1, player2, 3);
         let gameTwoWin = playGame (player3, player4, 3);
@@ -79,7 +82,7 @@ function playTournament(player1, player2, player3, player4, playUntil) {
     return firstPlace;
 }
 
-
+// Play the tournament and announce the winner.
 
 firstPlace = playTournament (player1, player2, player3, player4, 1);
     console.log(firstPlace.name + " is the world champion!")
